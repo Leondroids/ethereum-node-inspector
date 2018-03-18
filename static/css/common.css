@@ -140,7 +140,7 @@ span:hover {
     padding: 0px;
     background: none;
     border-width: 0px;
-    margin-top: 64px;
+    margin-top: 16px;
     height: auto;
 }
 #myTabs .ui-tabs-nav {
@@ -151,6 +151,8 @@ span:hover {
     -webkit-border-radius: 0px;
     border-radius: 0px;
 }
+.ui-tabs-nav li a:focus { outline: none; }
+#myTabs {border: none}
 #myTabs .ui-tabs-panel {
     padding:32px;
     padding-left: 16px;

@@ -43,6 +43,7 @@ func router(context *app.Context) *mux.Router {
 	nodeRouter := router.PathPrefix("/node").Subrouter().StrictSlash(true)
 	nodeRouter.Handle("/status", commonHandlers.ThenFunc(nodeHandler.Status)).Methods("GET")
 	nodeRouter.Handle("/info", commonHandlers.ThenFunc(nodeHandler.Info)).Methods("GET")
+	nodeRouter.Handle("/accounts", commonHandlers.ThenFunc(nodeHandler.Accounts)).Methods("GET")
 
 	router.PathPrefix("/").Handler(http.StripPrefix("/", http.FileServer(http.Dir("static/"))))
 

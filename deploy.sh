@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-export version=0.0.1
+export version=0.0.3
 export containername=ethereum-node-inspector
 
 echo "Test and Build Binary"

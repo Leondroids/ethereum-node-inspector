@@ -3,6 +3,7 @@ $(document).ready(function () {
     $('#myTabs').tabs();
     loadStatus();
     loadInfo();
+    loadAccounts()
 });
 
 function loadStatus() {
@@ -16,6 +17,8 @@ function loadStatus() {
 
         json = data;
 
+        body.append(createRow('Is Mining', json.isMining, ''));
+        body.append(createRow('Hashrate', json.hashrate + '/s', ''));
         body.append(createRow('Is Listening', json.isListening, ''));
         body.append(createRow('Peer Count', json.peerCount, ''));
         body.append(createRow('Current Block', nc(json.syncStatus.currentBlock), ''));
@@ -40,8 +43,24 @@ function loadInfo() {
         body.append(createRow('Client Version', json.clientVersion, ''));
         body.append(createRow('Protocol Version', json.protocolVersion, ''));
         body.append(createRow('NetworkID', json.networkId, ''));
+    });
+}
+function loadAccounts() {
+    console.log("loading accounts...");
+    $.get("/node/accounts", function (data, status) {
+        body = $('#tbodyAccounts')
+        body.empty();
 
+        console.log(status)
+        console.log(data)
 
+        json = data;
+
+        body.append(createRow('Coinbase', json.coinbase, ''));
+        body.append(createRow('................', '..........................................', ''));
+        json.accounts.forEach(function (value, index) {
+            body.append(createRow('Account ' + index, value, ''));
+        });
     });
 }
 
